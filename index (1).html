@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevFest 2025 - VTU</title>
+    <style>
+        :root {
+            --gdg-blue: #4285F4;
+            --gdg-red: #EA4335;
+            --gdg-yellow: #FBBC04;
+            --gdg-green: #34A853;
+            --color-white: rgba(255, 255, 255, 1);
+            --color-black: rgba(0, 0, 0, 1);
+            --color-gray-200: rgba(245, 245, 245, 1);
+            --color-gray-300: rgba(167, 169, 169, 1);
+            --color-slate-900: rgba(19, 52, 59, 1);
+            --font-family-base: "Segoe UI", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+            --space-8: 8px;
+            --space-12: 12px;
+            --space-16: 16px;
+            --space-24: 24px;
+            --space-32: 32px;
+            --radius-base: 8px;
+            --radius-lg: 12px;
+            --duration-normal: 250ms;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-base);
+            background: #1a1a2e;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-16);
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(66, 133, 244, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(234, 67, 53, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(251, 188, 4, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 90% 20%, rgba(52, 168, 83, 0.15) 0%, transparent 50%);
+            animation: moveGradient 15s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes moveGradient {
+            0%, 100% { 
+                transform: translate(0, 0) scale(1); 
+            }
+            33% { 
+                transform: translate(30px, -30px) scale(1.1); 
+            }
+            66% { 
+                transform: translate(-30px, 30px) scale(0.9); 
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            padding: var(--space-32);
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(
+                to right,
+                var(--gdg-blue) 0%,
+                var(--gdg-blue) 25%,
+                var(--gdg-red) 25%,
+                var(--gdg-red) 50%,
+                var(--gdg-yellow) 50%,
+                var(--gdg-yellow) 75%,
+                var(--gdg-green) 75%,
+                var(--gdg-green) 100%
+            );
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: var(--space-24);
+            gap: var(--space-8);
+        }
+
+        .logo-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .dot-blue { background: var(--gdg-blue); animation-delay: 0s; }
+        .dot-red { background: var(--gdg-red); animation-delay: 0.2s; }
+        .dot-yellow { background: var(--gdg-yellow); animation-delay: 0.4s; }
+        .dot-green { background: var(--gdg-green); animation-delay: 0.6s; }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.7; }
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--slate-900);
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: var(--space-8);
+            background: linear-gradient(135deg, var(--gdg-blue), var(--gdg-red), var(--gdg-yellow), var(--gdg-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--color-gray-300);
+            font-size: 14px;
+            margin-bottom: var(--space-32);
+        }
+
+        .subtitle a {
+            color: var(--gdg-blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .subtitle a:hover {
+            text-decoration: underline;
+        }
+
+        .instruction {
+            text-align: center;
+            font-size: 18px;
+            color: var(--color-slate-900);
+            margin-bottom: var(--space-24);
+            font-weight: 500;
+        }
+
+        .form-group {
+            margin-bottom: var(--space-24);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: var(--space-16);
+            font-size: 16px;
+            border: 2px solid var(--color-gray-200);
+            border-radius: var(--radius-base);
+            transition: all var(--duration-normal);
+            font-family: monospace;
+            letter-spacing: 2px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gdg-blue);
+            box-shadow: 0 0 0 4px rgba(66, 133, 244, 0.1);
+        }
+
+        .btn {
+            width: 100%;
+            padding: var(--space-16);
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: var(--radius-base);
+            cursor: pointer;
+            transition: all var(--duration-normal);
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(
+                135deg,
+                var(--gdg-blue),
+                var(--gdg-red),
+                var(--gdg-yellow),
+                var(--gdg-green)
+            );
+            background-size: 300% 300%;
+            color: var(--color-white);
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .message {
+            margin-top: var(--space-16);
+            padding: var(--space-12);
+            border-radius: var(--radius-base);
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+
+        .message.error {
+            background: rgba(234, 67, 53, 0.1);
+            color: var(--gdg-red);
+            border: 2px solid var(--gdg-red);
+        }
+
+        .message.success {
+            background: rgba(52, 168, 83, 0.1);
+            color: var(--gdg-green);
+            border: 2px solid var(--gdg-green);
+        }
+
+        .footer {
+            margin-top: var(--space-32);
+            text-align: center;
+            color: var(--color-gray-300);
+            font-size: 12px;
+        }
+
+        .decorative-circles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+        }
+
+        .circle-1 {
+            width: 100px;
+            height: 100px;
+            background: var(--gdg-blue);
+            top: -30px;
+            right: -30px;
+        }
+
+        .circle-2 {
+            width: 80px;
+            height: 80px;
+            background: var(--gdg-yellow);
+            bottom: -20px;
+            left: -20px;
+        }
+
+        .circle-3 {
+            width: 60px;
+            height: 60px;
+            background: var(--gdg-green);
+            top: 50%;
+            right: -10px;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: var(--space-24);
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .instruction {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="decorative-circles">
+            <div class="circle circle-1"></div>
+            <div class="circle circle-2"></div>
+            <div class="circle circle-3"></div>
+        </div>
+
+        <div class="logo-container">
+            <div class="logo-dot dot-blue"></div>
+            <div class="logo-dot dot-red"></div>
+            <div class="logo-dot dot-yellow"></div>
+            <div class="logo-dot dot-green"></div>
+        </div>
+
+        <h1>DevFest 2025</h1>
+        <div class="subtitle">
+            Organized by GDG at <a href="https://gdg.community.dev/gdg-on-campus-visvesvaraya-technological-university-belgaum-india" target="_blank" rel="noopener noreferrer">Visvesvaraya Technological University</a>
+        </div>
+
+        <p class="instruction">The code is inside this website</p>
+
+        <div class="form-group">
+            <input 
+                type="text" 
+                class="form-control" 
+                id="codeInput" 
+                placeholder="ENTER CODE"
+                autocomplete="off"
+                maxlength="20"
+            >
+        </div>
+
+        <button class="btn" onclick="checkCode()">Verify Code</button>
+
+        <div class="message" id="message"></div>
+
+        <div class="footer">
+            © 2025 Google Developer Groups • VTU
+        </div>
+    </div>
+
+    <script>
+        const CORRECT_CODE = 'YOUURCODEISHERE';
+        
+        // Encoded Google Drive link (Base64 encoded to hide from casual inspection)
+        const getRedirectUrl = () => {
+            // Replace the base64 string below with your encoded Google Drive link
+            // To encode: btoa('https://drive.google.com/file/d/YOUR_FILE_ID/view')
+            const encoded = 'aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xckhITUNzRkRtOWM0ZHRBSG5QWHVaWVdQa19nLWlXQ0ovdmlldz91c3A9c2hhcmluZw==';
+            return atob(encoded);
+        };
+
+        function checkCode() {
+            const input = document.getElementById('codeInput');
+            const message = document.getElementById('message');
+            const enteredCode = input.value.trim().toUpperCase();
+
+            if (!enteredCode) {
+                showMessage('Please enter a code', 'error');
+                return;
+            }
+
+            if (enteredCode === CORRECT_CODE) {
+                showMessage('Code verified! Redirecting...', 'success');
+                setTimeout(() => {
+                    window.location.href = getRedirectUrl();
+                }, 1500);
+            } else {
+                showMessage('Invalid code. Try again!', 'error');
+                input.value = '';
+                input.focus();
+            }
+        }
+
+        function showMessage(text, type) {
+            const message = document.getElementById('message');
+            message.textContent = text;
+            message.className = `message ${type}`;
+            message.style.display = 'block';
+
+            if (type === 'error') {
+                setTimeout(() => {
+                    message.style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        // Allow Enter key to submit
+        document.getElementById('codeInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkCode();
+            }
+        });
+
+        // Focus on input when page loads
+        window.onload = function() {
+            document.getElementById('codeInput').focus();
+        };
+    </script>
+</body>
+</html>
