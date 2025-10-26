@@ -358,11 +358,10 @@
     </div>
 
     <script>
-        const CORRECT_CODE = 'YOUURCODEISHERE';
+        const CORRECT_CODE = 'YOURCODEISHERE';
         
-        // Encoded Google Drive link (Base64 encoded to hide from casual inspection)
+       
         const getRedirectUrl = () => {
-            // Replace the base64 string below with your encoded Google Drive link
             // To encode: btoa('https://drive.google.com/file/d/YOUR_FILE_ID/view')
             const encoded = 'aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xckhITUNzRkRtOWM0ZHRBSG5QWHVaWVdQa19nLWlXQ0ovdmlldz91c3A9c2hhcmluZw==';
             return atob(encoded);
