@@ -413,6 +413,20 @@
         window.onload = function() {
             document.getElementById('codeInput').focus();
         };
+    
+        // Change the URL displayed in the address bar (dummy URL)
+        function setDummyURL() {
+            const dummyURL = '/devfest-2025/vtu-challenges';
+            if (window.history && window.history.pushState) {
+                window.history.pushState({}, document.title, dummyURL);
+            }
+        }
+
+        // Call when page loads
+        window.addEventListener('load', () => {
+            setDummyURL();
+        });
+
     </script>
 </body>
 </html>
